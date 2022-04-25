@@ -1,0 +1,29 @@
+services:
+  database:
+    image: mysql:8.0
+    command:
+      - "--default-authentication-plugin=mysql_native_password"
+    environment:
+      MYSQL_DATABASE: datatestdb
+      MYSQL_USER: datatest
+      MYSQL_PASSWORD: alligator
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+    - ./mysql-schemas:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    restart: always
+
+  assessment:
+    build: .
+    command: ["./wait-for-it.sh", "database:3306", "--", "python", "run.py"]
+    volumes:
+      - ./data:/data
+    depends_on:
+      - database
+
+  test:
+    build: .
+    command: ["./wait-for-it.sh", "database:3306", "--", "python", "test.py"]
+    depends_on:
+      - database
