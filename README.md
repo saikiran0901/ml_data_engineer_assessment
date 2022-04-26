@@ -26,14 +26,14 @@ We have provided a Github repo containing:
 To ensure the database is up and running, the following test can be run:
 
 ```
-docker-compose up test
+docker-compose up --build test
 ```
 
 ## Assessment
 
 The assessment consists of a series of small tasks to demonstrate your ability to perform the role of a data engineer at Profasee. We will be looking for both your ability to complete the tasks as well as the tools, data structures, python features, and code structure you use to accomplish the final result. Any python package needed can be added to the requirements.txt file. All code should be added to the `assessments` folder and be able to be run with the following command:
 ```
-docker-compose up assessment
+docker-compose up --build assessment
 ```
 
 Fork the git repo to your own Github account and complete the following tasks:
