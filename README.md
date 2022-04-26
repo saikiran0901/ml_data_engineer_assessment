@@ -32,12 +32,12 @@ docker-compose up --build test
 You should see output similar to the following:
 
 ```
-Attaching to ml_engineer_assessment_test_1
+Attaching to ml_data_engineer_assessment_test_1
 test_1        | wait-for-it.sh: waiting 15 seconds for database:3306
 test_1        | wait-for-it.sh: database:3306 is available after 0 seconds
 test_1        | Found rows in database:  4
 test_1        | Test Successful
-ml_engineer_assessment_test_1 exited with code 0
+ml_data_engineer_assessment_test_1 exited with code 0
 ```
 
 ## Assessment
