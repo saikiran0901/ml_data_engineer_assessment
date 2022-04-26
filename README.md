@@ -29,6 +29,17 @@ To ensure the database is up and running, the following test can be run:
 docker-compose up --build test
 ```
 
+You should see output similar to the following:
+
+```
+Attaching to ml_engineer_assessment_test_1
+test_1        | wait-for-it.sh: waiting 15 seconds for database:3306
+test_1        | wait-for-it.sh: database:3306 is available after 0 seconds
+test_1        | Found rows in database:  4
+test_1        | Test Successful
+ml_engineer_assessment_test_1 exited with code 0
+```
+
 ## Assessment
 
 The assessment consists of a series of small tasks to demonstrate your ability to perform the role of a data engineer at Profasee. We will be looking for both your ability to complete the tasks as well as the tools, data structures, python features, and code structure you use to accomplish the final result. Any python package needed can be added to the requirements.txt file. All code should be added to the `assessments` folder and be able to be run with the following command:
