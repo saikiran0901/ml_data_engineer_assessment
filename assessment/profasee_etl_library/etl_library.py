@@ -6,7 +6,8 @@ Created on Fri Apr 29 19:57:09 2022
 """
 import logging
 import pandas as pd
-
+import sqlalchemy
+from sqlalchemy import text
 
 class ExtractData():
     pass
@@ -50,4 +51,32 @@ class TransformData():
         return self.transform_data
 
 class LoadData():
-    pass
+    
+    def __init__(self):
+        self.db='mysql'
+        self.create_db_engine(self.db)
+
+    def create_db_engine(self,db):
+        if db == 'mysql':
+          self.engine = sqlalchemy.create_engine("mysql://datatest:alligator@database/datatestdb")
+          self.connection = self.engine.connect()   
+
+    def run_sql(self,sql,get_results):
+        sql = text(sql)
+        results = self.engine.execute(sql)  
+        
+        if get_results == 'Y':
+         # View the records
+         for record in results:
+            print("\n", record)
+
+    def create_table(self,sql):
+        pass
+    
+    def load_df_to_table(self,df,table_name,truncate):
+        if truncate == 'Y':
+         results = self.engine.execute(f"TRUNCATE TABLE {table_name}") 
+        df.to_sql(con=self.connection, name=table_name, if_exists='append')
+
+    def upsert_into_table(df,table):
+        pass

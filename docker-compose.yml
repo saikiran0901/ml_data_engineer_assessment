@@ -1,3 +1,4 @@
+version: "3"
 services:
   database:
     image: mysql:8.0
@@ -27,3 +28,9 @@ services:
     command: ["./wait-for-it.sh", "database:3306", "--", "python", "test.py"]
     depends_on:
       - database
+
+  dev:
+    build: .
+    command: ["./wait-for-it.sh", "database:3306", "--", "python", "run.py"]
+    depends_on:
+      - database      
