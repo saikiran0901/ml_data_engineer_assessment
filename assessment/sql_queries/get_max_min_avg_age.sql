@@ -1,0 +1,1 @@
+select min(Age) as min_age,max(Age) as max_age,avg(Age) as avg_age from dim_people

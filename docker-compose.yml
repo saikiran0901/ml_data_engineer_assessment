@@ -31,6 +31,6 @@ services:
 
   dev:
     build: .
-    command: ["./wait-for-it.sh", "database:3306", "--", "python", "run.py"]
+    command: ["./wait-for-it.sh", "database:3306", "--", "python", "api.py"]
     depends_on:
       - database      
